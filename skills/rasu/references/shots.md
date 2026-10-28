@@ -14,7 +14,13 @@ what makes shots cut together.
    an ad, then save it as `fields.form` with
    `project_write (type: project_update)`. Some checks stay blocked until the
    form is known, so do this first rather than after a failed check.
-2. **The sequence.** Find or create it (`sequence_read (type: seq_sequences_list)`,
+2. **The look and physics.** Call `engine (type: engine_consult)` with domain
+   video, concept project and the project's id, then write the project's look
+   and physics once with `project_write (type: project_style_update)`: how the
+   film looks, and what has weight, what a body does on contact, how long a
+   fall lasts. Every shot shares them, so never write them into a shot. While
+   either is unwritten, every shot's compile warns.
+3. **The sequence.** Find or create it (`sequence_read (type: seq_sequences_list)`,
    `sequence_write (type: seq_sequence_create)`). While it has no shots, call
    `engine (type: engine_consult)` with domain video, concept sequence and the
    sequence's id. Its relationships tell you how the characters in this scene
@@ -29,17 +35,16 @@ what makes shots cut together.
 2. **See who must be consulted.** `engine (type: engine_inspect)` with domain
    video, concept shot and the shot's id names the roles an update needs
    evidence from, and any check blocked on the story form.
-3. **Consult once per part you will write.** Call `engine (type: engine_consult)`
-   with domain video, concept shot, the shot's id and a focus. Shot focuses
-   are material, camera, action, direction, background, negative,
-   animation-preview, storyboard, physics, light, look, format and continuity.
-   Only consult the focuses you are about to write. On the second and later
-   consults, send `held` with the versions earlier replies named, so the
-   server does not repeat what you already have.
-4. **Read the relationships before the beats.** The action and direction
-   consults carry how the characters in frame stand toward each other. Play
-   that in what each one does and says. Never write the relationship itself
-   into the shot ("his rival"); show it ("he doesn't offer his hand").
+3. **Consult once.** Call `engine (type: engine_consult)` with domain video,
+   concept shot and the shot's id, and no focus. That one reply proves every
+   update to the shot, whichever fields you write. If you consult again later,
+   send `held` with the versions earlier replies named: only what changed
+   comes back whole.
+4. **Read the relationships before the beats.** The shot consult carries how
+   the characters in frame stand toward each other; they are never a focus of
+   their own. Play that in what each one does and says. Never write the
+   relationship itself into the shot ("his rival"); show it ("he doesn't
+   offer his hand").
 5. **Write once, with everything.** `seq_shot_update` with the shot's current
    `rev`, only the fields you change, and every consult's `evidenceId` in
    `evidenceIds`. If the update is refused for consultation evidence, the
@@ -47,9 +52,12 @@ what makes shots cut together.
 6. **Judge it yourself.** Read your write against the standards the consults
    gave. The server checks structure and rules; it does not decide whether the
    shot is good. That is your job, and in the end the person's.
-7. **Check it.** `engine (type: engine_check)` on the shot with `waitMs` 10000.
-   If the answer still lists pending checks, call again: empty findings with
-   pending checks is not a clean result.
+7. **Check it.** A shot write that made checks due answers with them: its
+   `checks` is the shot's `engine (type: engine_check)` answer, read after
+   waiting for them. If it still lists pending checks, call
+   `engine (type: engine_check)` on the shot with `waitMs` 10000: empty
+   findings with pending checks is not a clean result. A reply whose
+   `verification` names a `waitMs` carries no checks: make that call yourself.
 8. **Answer every finding.** Either fix it with another `seq_shot_update`
    (passing the check's `evidenceId` as `exposureId`), or dismiss it with
    `findings (type: story_finding_dismiss)` and a real reason the person

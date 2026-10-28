@@ -14,7 +14,6 @@ plain words what is in the way.
 | a code and a path | The fields you sent are malformed (a beat with no seconds, an asset under the wrong key) | Fix exactly that field. Nothing was written. |
 | blocked, with missing items | An estimate or compile found the shot cannot generate yet | Fix each missing item, or tell the person what is needed. |
 | the plan changed since the quote | The shot moved after you estimated | Estimate again; re-ask if the price changed. |
-| a stale receipt (screenplays) | The story project changed after you prepared | Call `story_prepare` again, then save. |
 | a job already running | The same download or generation is in flight | Poll that job with `generation_read (type: gen_job_get)`; do not submit again. |
 | not found | Wrong id, or something archived | Look it up by name again; check archived records if the person expects it to exist. |
 

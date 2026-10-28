@@ -35,7 +35,7 @@ npx skills add rasu-ai/rasu-skills --skill rasu
 
 Select your agent when prompted. Installation is project-local by default; add `-g` to install globally.
 
-See the [setup guide](https://docs.rasu.ai/docs/setup/agent-skill) for a prompt to copy to your agent that does all of this in one paste.
+See the [setup guide](https://docs.rasu.ai/setup/agent-skill) for a prompt to copy to your agent that does all of this in one paste.
 
 ## Use
 
@@ -47,7 +47,7 @@ In Claude Code, you can explicitly invoke the plugin skill with `/rasu:rasu`.
 
 | Skill | Purpose |
 |---|---|
-| [rasu](skills/rasu/SKILL.md) | Find the right project, direct shots with Rasu AI's shot method, write screenplays, quote credits before generating, and recover from refusals |
+| [rasu](skills/rasu/SKILL.md) | Find the right project, direct shots with Rasu AI's shot method, keep a project's script, quote credits before generating, and recover from refusals |
 
 ## Source
 

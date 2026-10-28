@@ -4,11 +4,11 @@ description: >
   Work in Rasu AI, the studio that turns stories into video, through its MCP
   server (named rasu). Use whenever the person mentions Rasu AI, one of
   their Rasu AI projects, sequences, shots, characters, Worlds, cuts or
-  screenplays, or asks to plan, direct, storyboard, write, generate or fix
+  scripts, or asks to plan, direct, storyboard, write, generate or fix
   anything there. Covers finding the right project first, the shot method
-  (consult the specialists, write, then check), developing and saving
-  screenplays, quoting credits and waiting for a yes before any generation, and
-  recovering from refusals and missing tools instead of retrying blindly.
+  (consult the specialists, write, then check), keeping a project's script,
+  quoting credits and waiting for a yes before any generation, and recovering
+  from refusals and missing tools instead of retrying blindly.
 ---
 
 # Working in Rasu AI
@@ -47,9 +47,8 @@ Before anything else, work out which project the person means.
 - Nothing named: list the projects and ask which one, in a single short
   question. An empty list is not an error; offer to start one with
   `project_write (type: project_create)` once they want it.
-- Screenplay work lives on the story side: `story_project (type: project.list)`,
-  then `story_context_brief` for what already exists. See
-  [screenplays](references/screenplays.md).
+- A script belongs to its video project: `studio_read (type: document_list)`
+  shows the project's script documents. See [Scripts](#scripts).
 
 Then read what you are about to touch: `sequence_read (type: seq_sequences_list)`
 and `sequence_read (type: seq_shots_list)` for sequences and shots,
@@ -67,14 +66,17 @@ server describes, every time, without being asked. In short:
 1. Know the story form. If the project has none, ask whether it is a feature
    film, an episode, a short or an ad, and save the answer as `fields.form`
    with `project_write (type: project_update)`. Never pick one yourself.
-2. Before the first shot of a sequence, consult on the sequence itself.
+2. Before any shot, consult on the project and write its look and physics
+   once with `project_write (type: project_style_update)`: every shot shares
+   them, so never write them per shot. Before the first shot of a sequence,
+   consult on the sequence itself.
 3. Create each shot with `seq_shot_create`: number and intent only.
 4. Consult on the shot once for each part you will write, then write it with
    `seq_shot_update`, passing every consult's `evidenceId` in `evidenceIds`.
 5. Judge your own work against what the consults said. The server gives
    context and standards; it does not grade taste.
-6. After every shot write, `engine (type: engine_check)` on the shot, and
-   answer each finding.
+6. A shot write's reply carries the shot's checks. Answer each finding, and
+   call `engine (type: engine_check)` on the shot again while any is pending.
 
 The details that make this go well, including what each consult focus is for
 and how to handle findings, are in [the shot method](references/shots.md).
@@ -87,7 +89,8 @@ Generation spends the team's credits. Before any call to `generate` or
 
 1. Quote it. For a shot, `preview (type: seq_shot_estimate)`; for an asset
    look, `preview (type: asset_variant_estimate)`; for a storyboard sheet,
-   `preview (type: storyboard_estimate)`.
+   `preview (type: storyboard_estimate)`; for a shot's blocking still,
+   `preview (type: seq_shot_still_estimate)`.
 2. Tell the person the cost and what they will get, in one sentence, and wait
    for a yes.
 3. Generate with the estimate's `compileReceipt`, unchanged.
@@ -96,14 +99,17 @@ Generation spends the team's credits. Before any call to `generate` or
 The full flow, including a blocked estimate, polling and takes, is in
 [generating](references/generating.md).
 
-## Screenplays
+## Scripts
 
-Writing and revising a screenplay has its own method, served by the server
-itself. Before writing, read the resource `rasu://workflow/screenplay`
-(or use the `develop_screenplay` prompt if your client shows prompts). The
-rules that protect the writer's work are in
-[screenplays](references/screenplays.md): every save replaces the whole
-document, so a careless save can delete scenes.
+A video project keeps its script as a document of its own. Start one with
+`project_story (type: document_create)` and kind `script`; you choose its
+`documentId`. Every revision is `project_story (type: document_version_append)`
+with the complete text and the document's current `rev`: earlier versions
+are never rewritten, so a correction is one more append, and a version that
+leaves a scene out has cut it. Before revising, ask the Screenwriter:
+`engine (type: engine_consult)` with domain video, concept document and the
+document's id reads the script whole. Notes and other markdown are files,
+written with `project_story (type: file_write)`, never script versions.
 
 ## When something goes wrong
 
