@@ -1,0 +1,12 @@
+{
+  "name": "rasu",
+  "description": "Use the Rasu AI MCP server well: find the project, follow the shot method, write screenplays, quote credits before generating and recover from refusals.",
+  "author": {
+    "name": "Rasu AI",
+    "url": "https://rasu.ai"
+  },
+  "homepage": "https://rasu.ai",
+  "repository": "https://github.com/rasu-ai/rasu-skills",
+  "license": "MIT",
+  "keywords": ["rasu", "mcp", "video", "film", "screenplay"]
+}

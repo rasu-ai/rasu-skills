@@ -1,0 +1,15 @@
+{
+  "name": "rasu-ai",
+  "description": "The Rasu AI skill: how an agent directs shots, writes screenplays and generates video through the Rasu AI MCP server.",
+  "owner": {
+    "name": "Rasu AI",
+    "url": "https://rasu.ai"
+  },
+  "plugins": [
+    {
+      "name": "rasu",
+      "description": "Use the Rasu AI MCP server well: find the project, follow the shot method, write screenplays, quote credits before generating and recover from refusals.",
+      "source": "./"
+    }
+  ]
+}
