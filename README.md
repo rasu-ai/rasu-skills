@@ -16,6 +16,15 @@ In Claude Code, run:
 claude mcp add --transport http rasu https://api.rasu.ai/mcp --scope user
 ```
 
+In Codex, run:
+
+```bash
+codex mcp add rasu --url https://api.rasu.ai/mcp
+codex mcp login rasu
+```
+
+The sign-in command waits until you approve in the browser, so leave it running.
+
 In any other agent, add a remote MCP server named `rasu` with the URL `https://api.rasu.ai/mcp` (Streamable HTTP). No API key is needed: the first time your agent calls Rasu AI, approve the sign-in in the browser window that opens.
 
 ### Claude Code plugin
@@ -27,7 +36,7 @@ claude plugin marketplace add rasu-ai/rasu-skills
 claude plugin install rasu@rasu-ai
 ```
 
-### Other agents via skills.sh
+### Codex and other agents via skills.sh
 
 ```bash
 npx skills add rasu-ai/rasu-skills --skill rasu
