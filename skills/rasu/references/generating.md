@@ -5,7 +5,7 @@ your job is to make the decision easy and never make it for them.
 
 ## Which tool
 
-- A shot's video or image take: `generate (type: seq_shot_generate)`.
+- A shot's video take: `generate (type: seq_shot_generate)`.
 - A look of a character, place or prop: `generate (type: asset_variant_generate)`.
 - A shot's storyboard sheet: `generate (type: storyboard_generate)`.
   A sheet guides the shot's video only once it is starred, and the person
