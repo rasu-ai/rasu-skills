@@ -20,17 +20,30 @@ what makes shots cut together.
    film looks, and what has weight, what a body does on contact, how long a
    fall lasts. Every shot shares them, so never write them into a shot. While
    either is unwritten, every shot's compile warns.
-3. **The sequence.** Find or create it (`sequence_read (type: seq_sequences_list)`,
-   `sequence_write (type: seq_sequence_create)`). While it has no shots, call
+3. **The relationships.** Working from a script, record what it shows
+   between its characters before any of its shots. Read
+   `studio_read (type: project_ties_get)` first; then, for each pair the
+   script ties, one bond with `world_cast (type: project_bond_create)`, named
+   for who the two are to each other ("married", "old rivals"), and each
+   direction's opening stance with `world_cast (type: project_stance_create)`:
+   what one wants from the other, what they hold back, what they call them.
+   `engine (type: engine_consult)` with domain video, concept asset, a
+   character's id and focus relationships gives the standards for both. Ask
+   the person about a tie you only infer, and leave `basis` unwritten: it
+   holds only words the person said. Without a bond, two people in a shot
+   are strangers to every specialist.
+4. **The sequence.** Find or create it (`sequence_read (type: seq_sequences_list)`,
+   `sequence_write (type: seq_sequence_create)`) and set its `cast`: the ids
+   of the characters in it. While it has no shots, call
    `engine (type: engine_consult)` with domain video, concept sequence and the
-   sequence's id. Its relationships tell you how the characters in this scene
-   stand toward each other, which shapes how the scene opens.
+   sequence's id. Its relationships tell you how the cast stand toward each
+   other, which shapes how the sequence opens.
 
 ## Each shot
 
-1. **Create it bare.** `seq_shot_create` with the shot number you choose and
+1. **Create it bare.** `seq_shot_create` with the shot number you choose,
    one line of intent: what the shot is for ("Mara realises the key is gone"),
-   not what it looks like. A shot is addressed afterwards by its sequence and
+   not what it looks like, and `characters`: the ids of the characters in it. A shot is addressed afterwards by its sequence and
    number; its id for the specialists is `<sequenceId>-<n>`.
 2. **See who must be consulted.** `engine (type: engine_inspect)` with domain
    video, concept shot and the shot's id names the roles an update needs

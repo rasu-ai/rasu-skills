@@ -70,7 +70,8 @@ server describes, every time, without being asked. In short:
    once with `project_write (type: project_style_update)`: every shot shares
    them, so never write them per shot. Before the first shot of a sequence,
    consult on the sequence itself.
-3. Create each shot with `seq_shot_create`: number and intent only.
+3. Create each shot with `seq_shot_create`: number, intent and the characters
+   in it.
 4. Consult on the shot once for each part you will write, then write it with
    `seq_shot_update`, passing every consult's `evidenceId` in `evidenceIds`.
 5. Judge your own work against what the consults said. The server gives
@@ -110,6 +111,10 @@ leaves a scene out has cut it. Before revising, ask the Screenwriter:
 `engine (type: engine_consult)` with domain video, concept document and the
 document's id reads the script whole. Notes and other markdown are files,
 written with `project_story (type: file_write)`, never script versions.
+
+Rasu AI never reads a script for who its people are to each other: you do.
+Before you write a script's shots, record what it shows between its
+characters, as [the sequence](references/shots.md#before-the-first-shot) describes.
 
 ## When something goes wrong
 
