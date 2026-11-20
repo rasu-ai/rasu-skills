@@ -122,3 +122,30 @@ Seedance checks the people in its references. A generate call on such a model
 checks any unchecked picture first, free, and waits for the answer. To have the
 sheet ready before the first clip, submit it once it is kept, with the person's
 consent: `asset_write (type: asset_verify)`. It is free and took seconds.
+
+## 8. Changing a sheet: a new picture, never an edit
+
+When the person wants something on a sheet changed (taller, longer legs, other
+trousers, a new haircut, another watch), never edit the sheet picture to change
+it. Edits drift the parts meant to stay: in testing, an edit to the legs also
+changed the untouched portraits. A sheet built by edits also can't be made again
+from its references.
+
+1. Write the change into the Character's rows with
+   `asset_write (type: asset_update)`: height and proportions in the build row,
+   clothes in the base wardrobe row. Say where the body lands, not only "longer
+   legs": "the hem of his blazer lands at mid-thigh".
+2. Quote and generate a new picture of the look from its references, as in step 4,
+   with `preview (type: asset_variant_estimate)` and
+   `generate (type: asset_variant_generate)`. The earlier picture stays as the
+   previous version.
+3. Keep the approved face. If the new picture's face drifts, crop the approved
+   portraits out of the earlier sheet, upload them with `media_upload_link`, and
+   add them as the first reference with
+   `asset_sheet (type: asset_reference_version_append)`. Don't add the whole
+   earlier sheet when the body changes: it copied the old proportions even when
+   told not to.
+4. Check the new sheet as in step 6, likeness first.
+
+The one edit allowed on a sheet is the grain repair in step 6, which changes
+nothing the sheet shows.

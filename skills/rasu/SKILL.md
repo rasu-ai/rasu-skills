@@ -91,7 +91,8 @@ the person wants one, above all of a real person, follow
 [character sheets](references/character-sheets.md): pictures of one current look
 only, their height asked (a photo cannot show it), a master portrait made from
 their best real photo, GPT Image 2.5 Sunburst at 2K, each signature item as a
-prop of its own, and a likeness check beside a real photo before anything else. Read it before the first sheet in a session.
+prop of its own, a likeness check beside a real photo before anything else, and
+any later change made as a new picture from the references, never an edit. Read it before the first sheet in a session.
 
 ## Generating costs money
 
