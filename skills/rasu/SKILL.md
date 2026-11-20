@@ -6,9 +6,10 @@ description: >
   their Rasu AI projects, sequences, shots, characters, Worlds, cuts or
   scripts, or asks to plan, direct, storyboard, write, generate or fix
   anything there. Covers finding the right project first, the shot method
-  (consult the specialists, write, then check), keeping a project's script,
-  quoting credits and waiting for a yes before any generation, and recovering
-  from refusals and missing tools instead of retrying blindly.
+  (consult the specialists, write, then check), making a character sheet that
+  looks like a real person, keeping a project's script, quoting credits and
+  waiting for a yes before any generation, and recovering from refusals and
+  missing tools instead of retrying blindly.
 ---
 
 # Working in Rasu AI
@@ -82,6 +83,15 @@ server describes, every time, without being asked. In short:
 The details that make this go well, including what each consult focus is for
 and how to handle findings, are in [the shot method](references/shots.md).
 Read it before you direct your first shot in a session.
+
+## Character sheets
+
+A character's sheet is what every later picture and clip of them copies. When
+the person wants one, above all of a real person, follow
+[character sheets](references/character-sheets.md): pictures of one current look
+only, their height asked (a photo cannot show it), a master portrait made from
+their best real photo, GPT Image 2.5 Sunburst at 2K, each signature item as a
+prop of its own, and a likeness check beside a real photo before anything else. Read it before the first sheet in a session.
 
 ## Generating costs money
 
