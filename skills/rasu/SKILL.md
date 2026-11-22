@@ -4,12 +4,14 @@ description: >
   Work in Rasu AI, the studio that turns stories into video, through its MCP
   server (named rasu). Use whenever the person mentions Rasu AI, one of
   their Rasu AI projects, sequences, shots, characters, Worlds, cuts or
-  scripts, or asks to plan, direct, storyboard, write, generate or fix
-  anything there. Covers finding the right project first, the shot method
-  (consult the specialists, write, then check), making a character sheet that
-  looks like a real person, keeping a project's script, quoting credits and
-  waiting for a yes before any generation, and recovering from refusals and
-  missing tools instead of retrying blindly.
+  scripts, or asks to plan, direct, storyboard, write, generate, edit, caption
+  or fix anything there. Covers finding the right project first, the shot
+  method (consult the specialists, write, then check), making a character
+  sheet that looks like a real person, assembling and finishing a cut the way
+  a short-form editor would while saying what the download cannot carry yet,
+  keeping a project's script, quoting credits and waiting for a yes before any
+  generation, and recovering from refusals and missing tools instead of
+  retrying blindly.
 ---
 
 # Working in Rasu AI
@@ -88,11 +90,15 @@ Read it before you direct your first shot in a session.
 
 A character's sheet is what every later picture and clip of them copies. When
 the person wants one, above all of a real person, follow
-[character sheets](references/character-sheets.md): pictures of one current look
-only, their height asked (a photo cannot show it), a master portrait made from
-their best real photo, GPT Image 2.5 Sunburst at 2K, each signature item as a
-prop of its own, a likeness check beside a real photo before anything else, and
-any later change made as a new picture from the references, never an edit. Read it before the first sheet in a session.
+[character sheets](references/character-sheets.md): their best original photos
+asked for first, pictures of one current look only, their height and one
+full-body photo asked (it carries how their clothes sit), a master portrait
+made from their best neutral, mouth-closed photo, GPT Image 2.5 Sunburst at 2K,
+each item they wear named and confirmed with them, then pictured on its own, a
+likeness check beside a real photo before anything else, and a sheet never
+edited and never made from an earlier sheet: any change or grain fix is a new
+picture from the photos, the master portrait and the item pictures. Read it
+before the first sheet in a session.
 
 ## Generating costs money
 
@@ -110,6 +116,25 @@ Generation spends the team's credits. Before any call to `generate` or
 
 The full flow, including a blocked estimate, polling and takes, is in
 [generating](references/generating.md).
+
+## Editing a cut
+
+When the person wants a cut assembled, tightened, captioned, graded or
+downloaded, name the kind of edit first, and ask when it is unclear. Then
+consult the Editor before you edit: `engine (type: engine_consult)` with
+domain video, concept cut, the sequence's id and that kind as the focus
+(`talking-head`, `story-promo`, `speaker-recap`, `montage-recap`,
+`beat-montage`, `talk-clips` or `captions-only`). It answers with the current
+guidance for that kind alone. A cut write's reply then carries `checks`, the
+Editor's findings on what you just changed: fix each one or dismiss it with a
+reason, and list them all with `engine (type: engine_check)` with domain
+video and concept cut. [Editing](references/editing.md) is the baseline: work
+from it when Rasu AI gives no answer. Before you promise a finish, say what the
+download holds today: the storyline only, with each clip's own sound, a basic
+grade and captions, and no music row, transitions, zooms or loudness
+correction yet. You cannot hear a clip, so ask the person for the times of
+words and beats, and to confirm anything that depends on sound. Read it before
+the first cut in a session.
 
 ## Scripts
 

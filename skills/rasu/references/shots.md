@@ -89,6 +89,9 @@ what makes shots cut together.
 - **Continuity carries forward.** What a body or prop carries out of a shot
   (torn sleeve, wet hair, the key in her left hand) goes in the shot's
   continuity, spelled as the asset is named, so the next shot opens on it.
+  It stops at the end of the sequence. On a sequence's first shot, the
+  continuity consult shows what the sequence before left; write what still
+  holds as an opening note (`at: "opening"`), or it is not in the prompt.
 - **Light a sequence once**, on the sequence. A shot writes its own lighting
   only where it differs.
 - **Before generating**, `preview (type: seq_shot_compile)` shows the prompt
