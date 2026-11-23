@@ -29,13 +29,16 @@ What goes in decides likeness more than any prompt.
   duplicates add nothing.
 - **Group photos:** crop the person out before you upload. A face of about
   230 × 260 pixels still worked.
-- **Ask their height.** A phone photo cannot show how tall someone is, and
+- **Ask their height, weight and build.** A phone photo cannot show how tall someone is, and
   height changes how the whole body is drawn. Ask "How tall is this person?"
   every time, and write the answer in the Character's build row in centimetres
   (187 cm; keep feet and inches beside it if that is how they said it) with
   `asset_write (type: asset_update)`. If they don't know, write their rough
-  height in words ("about average height") rather than a guessed number. The
-  character-sheet recipe asks the same question.
+  height in words ("about average height") rather than a guessed number.
+  Ask for weight and build in their own words too ("80 kg, lean and strong"),
+  and keep those words in the same editable Build row; leave unknown facts
+  unfilled. The character-sheet recipe asks height and one combined
+  weight-and-build answer beside the photo.
 - **Ask for one full-body photo, for how their clothes sit.** Ask for one photo
   of them standing straight, head to toe, taken from a few steps back with the
   camera at about chest height, and not on the ultra-wide lens. Add it as a
@@ -231,7 +234,7 @@ changed the untouched portraits. A sheet built by edits also can't be made again
 from its references.
 
 1. Write the change into the Character's rows with
-   `asset_write (type: asset_update)`: height in the build row, clothes in the
+   `asset_write (type: asset_update)`: height, weight and build in the Build row, clothes in the
    base wardrobe row. Say where a garment lands on the body, not only "longer
    legs": "the hem of his blazer lands at mid-thigh".
 2. Quote and generate a new picture of the look from its references, as in step 4,

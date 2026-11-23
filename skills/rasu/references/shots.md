@@ -92,6 +92,12 @@ what makes shots cut together.
   It stops at the end of the sequence. On a sequence's first shot, the
   continuity consult shows what the sequence before left; write what still
   holds as an opening note (`at: "opening"`), or it is not in the prompt.
+- **Sizes are heights, never size words.** Video models draw "a head
+  taller", "towers over" or "the biggest" literally and make the person a
+  giant. With two or more people in a shot, Rasu AI prints each one's
+  height from their build row; write a comparison only as a visible cue
+  the heights agree with ("his eyes are level with the top of her head"),
+  and fix any size or height line the shot's checks raise.
 - **Light a sequence once**, on the sequence. A shot writes its own lighting
   only where it differs.
 - **Before generating**, `preview (type: seq_shot_compile)` shows the prompt
