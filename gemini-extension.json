@@ -1,0 +1,6 @@
+{
+  "name": "rasu",
+  "version": "1.1.0",
+  "description": "Make pictures and video with Rasu AI: one-off images and clips, review notes on a video, and films directed shot by shot.",
+  "contextFileName": "GEMINI.md"
+}

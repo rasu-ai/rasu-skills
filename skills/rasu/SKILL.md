@@ -1,17 +1,19 @@
 ---
 name: rasu
 description: >
-  Work in Rasu AI, the studio that turns stories into video, through its MCP
-  server (named rasu). Use whenever the person mentions Rasu AI, one of
-  their Rasu AI projects, sequences, shots, characters, Worlds, cuts or
-  scripts, or asks to plan, direct, storyboard, write, generate, edit, caption
-  or fix anything there. Covers finding the right project first, the shot
-  method (consult the specialists, write, then check), making a character
-  sheet that looks like a real person, assembling and finishing a cut the way
-  a short-form editor would while saying what the download cannot carry yet,
-  keeping a project's script, quoting credits and waiting for a yes before any
-  generation, and recovering from refusals and missing tools instead of
-  retrying blindly.
+  Make pictures and video with Rasu AI through its MCP server (named rasu):
+  any image, photo, restyle, variation, thumbnail, ad, character, storyboard,
+  clip or film the person asks for, even when they do not name Rasu AI, and
+  anything in their Rasu AI projects, sequences, shots, characters, Worlds,
+  cuts or scripts. Use it to make, plan, direct, storyboard, write, generate,
+  show, review, edit, caption or fix any of it. Covers one-off pictures and
+  clips shown in Rasu AI's own panel in the chat, review notes pinned on a
+  video, finding the right project first, the shot method (consult the
+  specialists, write, then check), making a character sheet that looks like
+  a real person, assembling and finishing a cut the way a short-form editor
+  would, keeping a project's script, quoting credits and waiting for a yes
+  before any generation, and recovering from refusals and missing tools
+  instead of retrying blindly.
 ---
 
 # Working in Rasu AI
@@ -36,6 +38,39 @@ goes wrong.
    try once more. Never loop the same call.
 5. **Never decide the story for them.** Story form, tone, who a character is:
    ask when it is not written down. Suggest, then wait.
+
+## Any picture or clip
+
+When the person asks for an image or a video that belongs to no project (a
+picture, a photo restyled, four variations, a thumbnail, an ad still, a short
+clip), make it in Rasu AI without a project:
+
+1. Say what you will make, on which model and how many, and wait for a yes,
+   as [Generating costs money](#generating-costs-money) says.
+2. Make each one with `generate_raw (type: gen_image_generate)` or
+   `generate_raw (type: gen_video_generate)`, once per variation.
+3. Straight away, show them with `media_show`, passing the jobIds. Rasu AI's
+   own panel draws them in the chat and fills each one in as it finishes, so
+   do not poll the jobs first.
+4. The person picks one, or asks for a video from it or more like it, in the
+   panel. That arrives as their own message naming the file's mediaId: act on
+   it like any other request, quoting again before you spend.
+5. Where no panel appears (a terminal agent), look at each with
+   `asset_read (type: media_look)` and give the person links from
+   `asset_read (type: media_download)`.
+
+A film, an episode or anything in a project follows the shot method below.
+
+## Review notes
+
+To have the person review a video (a take, a downloaded cut), show that one
+video with `media_show`. The panel becomes a review player: they play it, pin
+notes on a moment and a point of the frame, and send the open ones to you as
+a message, each with its time (minutes:seconds.tenths), where on the frame,
+and their words. Fix what each asks, then tick it done with
+`library_write (type: media_note_resolve)` once the new take answers it.
+`media_show` with the video's mediaId answers its notes again whenever you
+need them.
 
 ## First call: find where you are
 

@@ -36,6 +36,18 @@ claude plugin marketplace add rasu-ai/rasu-skills
 claude plugin install rasu@rasu-ai
 ```
 
+### Gemini CLI extension
+
+```bash
+gemini extensions install https://github.com/rasu-ai/rasu-skills
+```
+
+The extension carries the skill and a short note Gemini reads at the start of every session, so it reaches for Rasu AI whenever you ask for a picture or a video. Add the server as in [Connect Rasu AI](#connect-rasu-ai).
+
+### Codex plugin
+
+This repository is also a Codex plugin (`.codex-plugin/plugin.json`), listed under Creativity, carrying the same skill.
+
 ### Codex and other agents via skills.sh
 
 ```bash
@@ -52,11 +64,13 @@ Ask your agent, for example:
 
 > Using Rasu AI, plan the opening sequence of my short film: a lighthouse keeper finds a message in a bottle.
 
+> Make four variations of this photo as a 1980s film still.
+
 In Claude Code, you can explicitly invoke the plugin skill with `/rasu:rasu`.
 
 | Skill | Purpose |
 |---|---|
-| [rasu](skills/rasu/SKILL.md) | Find the right project, direct shots with Rasu AI's shot method, keep a project's script, quote credits before generating, and recover from refusals |
+| [rasu](skills/rasu/SKILL.md) | Make any picture or clip and show it in Rasu AI's panel, review a video with notes pinned on the frame, find the right project, direct shots with Rasu AI's shot method, keep a project's script, quote credits before generating, and recover from refusals |
 
 ## Source
 

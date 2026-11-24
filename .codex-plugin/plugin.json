@@ -1,0 +1,29 @@
+{
+  "name": "rasu",
+  "version": "1.1.0",
+  "description": "Make pictures and video with Rasu AI: one-off images and clips shown in Rasu AI's own panel, review notes pinned on a video, and films directed shot by shot with consistent characters.",
+  "author": {
+    "name": "Rasu AI",
+    "url": "https://rasu.ai"
+  },
+  "homepage": "https://rasu.ai",
+  "repository": "https://github.com/rasu-ai/rasu-skills",
+  "license": "MIT",
+  "skills": "./skills",
+  "interface": {
+    "displayName": "Rasu AI",
+    "shortDescription": "Pictures, video and whole films",
+    "longDescription": "Make any picture or clip, restyle a photo, try four variations, or direct a whole film with the same characters from shot to shot. Results open in Rasu AI's own panel in the chat, where you pick a take or pin review notes on a video.",
+    "developerName": "Rasu AI",
+    "category": "Creativity",
+    "capabilities": [],
+    "defaultPrompt": [
+      "Make four variations of this photo as a 1980s film still",
+      "Turn my product shot into an 8-second video ad",
+      "Plan the opening sequence of my short film about a lighthouse keeper"
+    ],
+    "websiteURL": "https://rasu.ai",
+    "privacyPolicyURL": "https://rasu.ai/privacy",
+    "termsOfServiceURL": "https://rasu.ai/terms"
+  }
+}
