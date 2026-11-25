@@ -173,7 +173,9 @@ capitals are the only emphasis), motion, and a second language.
 
 ## 12. Download and check
 
-`cut_finish (type: cut_download)` is free and changes nothing. Read its job
+`cut_finish (type: cut_download)` is free and changes nothing;
+`cut_finish (type: film_download)` is the same for a whole film, every
+sequence with a clip on its storyline in story order. Read its job
 with `generation_read (type: gen_job_get)` and `waitMs` until it is done. The
 finished job lists what the file left out as warnings: relay every one. Look
 at the file with `asset_read (type: media_look)`, hand it over with
