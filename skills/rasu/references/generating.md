@@ -116,8 +116,9 @@ automatic seam mark or pre-cut guarantee is supplied by this workflow.
 
 A character's kit master portrait is a square head-and-shoulders picture of its
 face. When the person asks you to make one, use the front photo they pick and
-send one `generate_raw (type: gen_image_generate)` on GPT Image 2.5 Sunburst in Reference mode at 1:1, asking
-for head and shoulders, face straight to camera, on plain grey; then save its
+send one `generate_raw (type: gen_image_generate)` on GPT Image 2.5 Sunburst in Edit mode at 1:1 and 2K, the
+photo its only input, in the wording the character-sheets reference gives
+(head and shoulders, face straight to camera, on plain grey); then save its
 picture as `fields.blocks.kit.portrait` with `asset_write (type: asset_update)`,
 the kit written whole. Never cut it from the character's sheet: the door refuses
 a look picture or one drawn from it.

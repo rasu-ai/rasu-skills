@@ -6,6 +6,20 @@ taken from an old photo, grain, a ring on the wrong hand. This is the method tha
 made sheets of real people look like them and stay clean, measured over 100
 generations on real people's photos. Follow it in order.
 
+## The standard every sheet of a real person ends in
+
+Whichever way the sheet is asked for, the output is the same: a master portrait
+on the Character's kit, then the sheet on GPT Image 2.5 Sunburst at 2K, with a
+front full-body picture drawn and quoted beside it. Rasu AI holds most of that
+for you. A Character's look that lists the person's photos, or whose Character
+has a kit, runs on Sunburst at 2K when you name no model and no resolution, and
+its estimate warns when the kit has no master portrait. The master portrait is
+the one part you make (step 3), unless the person runs the Character sheet
+recipe: it draws the portrait, saves it on the kit, lists the photo and draws
+the sheet in one run with one price. Read it with
+`recipes_read (type: recipe_get)`, id `character-sheet`, and offer it first to
+someone starting from a single photo.
+
 ## 1. Choose the pictures first
 
 What goes in decides likeness more than any prompt.
@@ -53,8 +67,9 @@ What goes in decides likeness more than any prompt.
   `asset_sheet (type: asset_media_link)`, role `reference`. Attaching is not
   sending: list each picture on the look that uses it, with its role, through
   `asset_look (type: asset_variant_update)` (`inputs` and `roles`: identity for
-  the person's photos and the master portrait, wardrobe for an outfit photo,
-  prop for an item picture). Then quote the look: its estimate says
+  the person's photos, wardrobe for an outfit photo, prop for an item picture).
+  The master portrait is not listed here: it goes on the kit (step 3), and
+  every look then sends it first. Then quote the look: its estimate says
   "N of 10 reference slots used" and names each picture. 0 means nothing will
   be sent, whatever the look's words say. Never use
   `asset_sheet (type: asset_reference_version_append)` for a photo: it makes
@@ -103,17 +118,22 @@ wording that kept the face untouched:
 Show it beside the real photo and ask "Does this look like them?" before going
 on. Look at the eyes and brows, not only the face shape: in their own photo
 there is a clear gap between brow and eye, and a master where the brows sit on
-the eyes reads as someone else. Then attach it with
-`asset_sheet (type: asset_media_link)`, role `reference`, and list it first on
-the look as identity (step 1).
+the eyes reads as someone else. Then save it as the Character's kit portrait:
+`fields.blocks.kit.portrait` with `asset_write (type: asset_update)`, the kit
+written whole. Every look of the Character then sends it first, as the face, and
+so does every shot that casts them. Never cut it from a sheet: the door refuses
+a look picture, or one drawn from it, as a kit portrait.
 
 ## 4. The sheet
 
 Generate the Character's look with `generate (type: asset_variant_generate)`,
-quoting it first with `preview (type: asset_variant_estimate)`. For a real
-person, set the model to GPT Image 2.5 Sunburst and the resolution to 2K. It
-costs more than the house default, so say so when you quote it, and offer
-GPT Image 2.5 Flare for trial looks:
+quoting it first with `preview (type: asset_variant_estimate)`. Name no model
+and no resolution: a real person's sheet runs on GPT Image 2.5 Sunburst at 2K,
+and its front full-body picture is drawn and quoted with it. It costs more than
+the house default, so say so when you quote it; name GPT Image 2.5 Flare only
+when the person asks for a cheaper trial look. If the estimate warns that there
+is no master portrait, go back to step 3 before spending. What each model did
+with real people:
 
 | Model | What happened with real people |
 |---|---|
@@ -122,9 +142,10 @@ GPT Image 2.5 Flare for trial looks:
 | GPT Image 2 | The main source of grain and over-sharpening, different every run; worst at 4K |
 | Nano Banana Pro or 2 | Drifted toward a generic "AI version" of the person and added texture |
 
-Send, in this order: the master portrait, one neutral real photo, the
-full-body photo, then each item picture as prop. Never the earlier sheet, and
-never the smiling photo once a neutral one exists. Rasu AI never sends an
+Rasu AI sends the kit's master portrait first, then the photos the look lists,
+then the kit's items. List one neutral real photo and the full-body photo, and
+each item picture as prop. Never the earlier sheet, and never the smiling photo
+once a neutral one exists. Rasu AI never sends an
 earlier sheet on a look that lists the person's photos (step 8).
 
 If you write or override a sheet prompt yourself, three lines carry the result:
